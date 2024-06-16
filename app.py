@@ -1,8 +1,12 @@
 master_pwd = input("Master Password?: ")
-
+#Only read existing file
 def view():
-    pass
-
+    with open("passwords.txt", 'r') as f:
+        for line in f.readlines():
+            #Could just do print(line), however, rstrip removes \n and data.split removes pipe operator, assuming pwd doesnt contain any
+            data = line.rstrip()
+            user, passw = data.split("|")
+            print(f"User: {user} | Password: {passw}")
 
 def add():
     name = input("Account Name: ")
